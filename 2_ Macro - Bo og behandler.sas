@@ -24,9 +24,8 @@ Bområder og behandlingssteder
 2.8		BehSh - Behandlende sykehus
 2.9		BehHF - Behandlende helseforetak
 2.10	BehRHF - Behandlende regionalt helseforetak
-2.11	Vertskommuner i Helse Nord
-2.12	SpesialistkommunerHN
-2.13    Spesialistenes avtale-RHF 
+2.11    SpesialistKomHN og vertskommuner (Vertskommuner Helse Nord)
+2.12    Spesialistenes avtale-RHF 
 ************************************************************************************************
 ***********************************************************************************************/
 
@@ -614,7 +613,7 @@ if BehHF=27 then BehRHF=5;/* Private sykehus */;
 %if &avtspes ne 0 %then %do;
 /*
 **************************************************************************
-2.3 Definerer SpesialistKomHN og vertskommuner (Vertskommuner Helse Nord)
+2.11 Definerer SpesialistKomHN og vertskommuner (Vertskommuner Helse Nord)
 **************************************************************************
 */
 
@@ -704,7 +703,7 @@ else AvtSpesKomHN = .;
 
 /*
 ************************************************************************************************
-2.4 Spesialistenes avtale-RHF 
+2.12 Spesialistenes avtale-RHF 
 ************************************************************************************************
 */
 /*Egen numerisk variabel for avtaleRHF*/
