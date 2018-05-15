@@ -17,10 +17,12 @@ Data &Utdatasett;
 Set &Inndatasett;
 
 /*
-***************************************************
-3.4		ICD10KAP
-***************************************************
+************************************************************************************************
+3.1	ICD10KAP
+************************************************************************************************
 /*Definerer hoveddiagnosekap for ICD10 (1 tegn) ut fra oppgitt hoveddiagnose (4 tegn).*/;
+
+/* Disse kodene er ikke oppdatert siden 2014 - vi må finne/be e-helsedir og lister for hvert år */
 
 if substr(Hdiag,1,1) ='A' then ICD10Kap=1; /*Visse infeksjonssykd og parasittsykd*/
 else if substr(Hdiag,1,1)='B' then ICD10Kap=1; /*Visse infeksjonssykd og parasittsykd*/
@@ -71,7 +73,7 @@ else ICD10Kap=23; /*Ukjent eller manglende diagnose*/
 
 /*
 ************************************************************************************************
-3.5		ICD10KATBLOKK
+3.2 	ICD10KATBLOKK
 ************************************************************************************************
 /*Definerer ICD10 kategoriblokker*/
 
@@ -318,9 +320,9 @@ else if substr(Hdiag,1,2) in (' ','Ugyldig') then ICD10KatBlokk=.;
 else ICD10KatBlokk=.;
 /*
 ************************************************************************************************
-3.6	Hdiag_3tegn
+3.3		Hdiag_3tegn	
 ************************************************************************************************
-/*Definerer hoveddiagnose på 3-tegnsnivå*/
+/*Definerer hoveddiagnose på 3-tegnsnivå*/;
 
 Hdiag3tegn=substr(Hdiag,1,3);
 
@@ -331,6 +333,7 @@ Hdiag3tegn=substr(Hdiag,1,3);
 ************************************************************************************************
 /*Lager ny harmonisert variabel fra FAG og FAGLOGG. */
 
+%if &avtspes ne 0 %then %do;
 if aar in (2012:2014) then do;
 
 /***	2011 - 2014		***/
@@ -384,6 +387,8 @@ end;
 tell_Normaltariff = tell_takst;
 AvtSpes=1;
 drop tell_takst;
+%end;
+
 run;
 
 %Mend ICD;
