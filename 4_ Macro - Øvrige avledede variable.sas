@@ -96,6 +96,6 @@ if DRG_TYPE=' ' then DRGtypeHastegrad=9;
 if hastegrad=. then DRGtypeHastegrad=9;
 %end;
 
-Run;
+run;
 
 %Mend Avledede;
