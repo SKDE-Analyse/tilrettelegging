@@ -1,40 +1,61 @@
-
-/**********************************************************************
-***********************************************************************
-	6.1	Redusere lengde på variable
-***********************************************************************
-**********************************************************************/
-
-
 %macro reduser_lengde(innDataSett=, utDataSett=);
 
 data &utDataSett;
 set &innDataSett;
 
-length ncmp: $6;
-length ncsp: $6;
-length cyto_: $6; 
+length ncmp: $7;
+length ncsp: $7;
+length cyto_: $7; 
 
-length bohf borhf boshhn fylke 3;
+length bohf borhf boshhn fylke 4;
 length bydel 6;
-length hdiag hdiag2 $6;
-length bdiag: $5;
+%if &somatikk ne 0 %then %do;
+length behhf behrhf behsh 4;
+%end;
+length hdiag hdiag2 $7;
+length bdiag: $7;
+%if &avtspes ne 0 %then %do;
 length tdiag: $5;
+%end;
 length hdiag3tegn $3;
-length aar 3;
-length ald_gr: 3;
+length aar 4;
 length ErMann 3;
 length fodselsar 4;
 length ICD10Kap: 3;
-length innmateHast kjonn kontaktType 3;
+length innmateHast kjonn kontaktType 4;
 length inndato utdato KomNr 4;
 length institusjonID  6;
-length NPRId_reg stedAktivitet 3;
-length tell_: 3;
-length pid 5;
-length versjon $6;
-format KoblingsID 32.;
+length NPRId_reg stedAktivitet 4;
+length tell_: 4;
+length pid 6;
+length versjon $7;
+%if &somatikk ne 0 %then %do;
+length hastegrad aktivitetskategori: 4;
 
+length aggrshoppID 5;
+length alderIDager 4;
+length behandlingsstedKode: 6;
+length debitor 3;
+
+length drg $4;
+length drg_type $1;
+length DRGtypeHastegrad 3;
+length fodselsAar_ident 3;
+length fodselsvekt 4;
+length fodt_mnd g_omsorgsniva hastegrad hdg henvType 3;
+length inntilstand intern_kons isf_opphold kjonn_ident liggetid 4;
+length InnTid UtskrKlarDato 4;
+length institusjonID_original 6;
+length omsorgsniva oppholdstype pakkeforlop permisjonsdogn polIndir polIndirekteAktivitet polUtforende_1 polUtforende_2 RehabType 4;
+length relatertKontaktID 6;
+length trimpkt utforendeHelseperson utTilstand VertskommHN 4;
+length UtTid 5;
+%end;
+%if &avtspes ne 0 %then %do;
+length ald_gr: 3;
+%end;
+
+format koblingsID 32.;
 
 run;
 
