@@ -76,7 +76,6 @@ else ICD10Kap=23; /*Ukjent eller manglende diagnose*/
 3.2 	ICD10KATBLOKK
 ************************************************************************************************
 /*Definerer ICD10 kategoriblokker*/
-
 if substr(Hdiag,1,2) ='A0' then ICD10KatBlokk=1 /* A00-A09 Infeksiøse tarmsykdommer */;
 else if substr(Hdiag,1,2)='A1' then ICD10KatBlokk=2 /* A15-A19 Tuberkulose */;
 else if substr(Hdiag,1,2)='A2' then ICD10KatBlokk=3 /* A20-A28 Visse bakterielle zoonoser */;
