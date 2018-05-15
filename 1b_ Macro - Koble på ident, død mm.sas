@@ -1,9 +1,14 @@
-/* Kobler først på variablene emigrert og dodDato fra egen fil */
+/* 
+Kobler først på variablene emigrert og dodDato fra egen fil
+
+Kjøres kun på avtalespesialistfil
+*/
 
 /* Merge med sql */
 
-%Macro Merge_dod_emigrert_ident (innDataSett=, utDataSett=);
+%Macro Merge_dod_emigrert_ident(innDataSett=, utDataSett=);
 
+%if &avtspes ne 0 %then %do;
 proc sql;
 create table &utDataSett as
 select &innDataSett..*, emigrertDato, dodDato, fodselsAar_ident09052017, fodt_mnd_ident09052017, kjonn_ident09052017
@@ -20,5 +25,6 @@ label fodt_mnd_ident09052017='Fødselsmåned fra f.nr. ved siste kontakt med spes.
 label kjonn_ident09052017='Kjønn fra f.nr. ved siste kontakt med spes.helsetjenesten';
 length DodDato emigrertdato 4;
 run;
+%end;
 
-%Mend Merge_dod_emigrert_ident;
+%mend;
