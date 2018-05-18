@@ -11,6 +11,13 @@ MACRO FOR Å KOBLINGS_ID
 
 %macro KoblingsID_avd (innDataSett=, utDataSett=);
 
+/*!
+Lager unik variabel *KoblingsID* for hver linje i avdelingsoppholdsfil
+
+13 siffer. Begynner med 171ÅR der ÅR = 16 for 2016 
+
+*/
+
 proc sort data=&innDataSett;
 by PID inndato utdato;
 run;
@@ -55,6 +62,14 @@ run;
 
 %macro KoblingsID_sho (innDataSett=, utDataSett=);
 
+/*!
+Lager unik variabel *KoblingsID* for hver linje i sykehusoppholdsfil
+
+13 siffer. Begynner med 172ÅR der ÅR = 16 for 2016 
+
+*/
+
+
 proc sort data=&innDataSett;
 by PID inndato utdato;
 run;
@@ -97,6 +112,12 @@ run;
 
 %macro KoblingsID_avtspes (innDataSett=, utDataSett=);
 
+/*!
+Lager unik variabel *KoblingsID* for hver linje i avtalespesialistfil
+
+13 siffer. Begynner med 173ÅR der ÅR = 16 for 2016 
+
+*/
 
 
 proc sort data=&innDataSett;
